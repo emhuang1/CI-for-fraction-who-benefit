@@ -1,50 +1,37 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red0\green0\blue0;}
-{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c100000;\csgenericrgb\c0\c0\c0;}
-\margl1440\margr1440\vieww17220\viewh13640\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+The folder entitled functions
 
-\f0\fs24 \cf2 The folder entitled functions\cf0 \
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+This folder gives the code for our method in the case of no restrictions and assignment probability = 1/2. We demonstrate how to apply the code with an example data set. 
 
-\b \cf0 This folder gives the code for our method in the case of no restrictions and assignment probability = 1/2. We demonstrate how to apply the code with an example data set. \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+The implementation of our method is presented in Appendix J of the Supplementary Materials of our paper. We provide both R and MATLAB code implementing our method. The MATLAB code is in the script entitled “CI_noRes.m”. This code outputs the confidence interval constructed using our method \hat{CI}_n, in the case of no restrictions and assignment probability theta = 1/2. We demonstrate how to apply the code with an example data set taken from our simulations. We also provide R code in the file entitled “CI_noRes.R”. This R code performs the same tasks as the MATLAB code. The results from the R and MATLAB code can differ slightly since they use different quadratic program solvers.
 
-\b0 \cf0 \
-The implementation of our method is presented in Appendix J of the Supplementary Materials of our paper. We provide both R and MATLAB code implementing our method. The MATLAB code is in the script entitled \'93CI_noRes.m\'94. This code outputs the confidence interval constructed using our method \\hat\{CI\}_n, in the case of no restrictions and assignment probability theta = 1/2. We demonstrate how to apply the code with an example data set taken from our simulations. We also provide R code in the file entitled \'93CI_noRes.R\'94. This R code performs the same tasks as the MATLAB code. The results from the R and MATLAB code can differ slightly since they use different quadratic program solvers.\
-\
-\cf2 The folder entitled CLEARIII\
-\
-\cf0 There are three subfolders:\
-1) \'93constructDataset\'94: We format the CLEAR III data set before applying our method and the m-out-of-n bootstrap. The data set is not included because it is proprietary. \
-2) \'93applyMethod\'94: We apply our method \\hat\{CI\}_n to the CLEAR III data set. The MATLAB code is provided separately for each outcome.\
-3) \'93applyMoutOfN\'94: We apply the m-out-of-n bootstrap, using different choices for m including m = n, m = 0.9n, m = 0.75n, m = 0.5n, m = 0.25n. A function for applying the m-out-of-n bootstrap for these choices of m is in the R script \'93mOfn_code.R\'94. The code for applying the m-out-of-n bootstrap to the CLEAR III data set is in the R script \'93computingCIs.R\'94.\
-4) \'93applyHorowitzManski\'94: We apply the method by Horowitz and Manski (2000). R code is provided.\
-\
-\
-\cf2 The folder entitled limitDist_underNull\cf0 \
-\
-In the subfolder \'93binary_noRes_5050\'94, we take 100,000 draws from the asymptotic distribution of the test statistic under Simulation Setting A when psi = 0.5. We use the code \'93Fig2.R\'94 to generate Figure 2 of the main paper (\'93Fig2.pdf\'94), which is a histogram of these 100,000 draws. \
-\
-\cf2 The folder entitled simulations\cf0 \
-\
-There is a subfolder for each setting of the simulation studies. Setting A corresponds to \'93binary_noRes_5050\'94; Setting B corresponds to \'93binary_noHarm_5050\'94; Setting C corresponds to \'93binary_noRes_7550\'94; Setting D corresponds to \'93MISTIE_RICV5\'94. Within each subfolder, there are three folders:\
-1) \'93testDatasets\'94, in which the 5000 (or 1000 in the case of Setting D) trials are simulated\
-2) \'93ourMethod\'94, which applies our method \\hat\{CI\}_n to each of the simulated trials\
-3) \'93mOfn\'94, which applies the competitor method using m-out-of-n bootstrap to each of the simulated trials\
-4) \'93manski_horowitz\'94, which applies the competitor method proposed by Horowitz and Manski (2000) to each of the simulated trials\
-5) \'93chernozhukov\'94 (only in the \'93binary_noRes_5050\'94 subfolder), which applies the competitor method proposed by Chernozhukov et al (2013) to the simulated trials\
-\
-The code \'93plotResults.R\'94 plots the results. It generates Figures 3-4 from the main paper, and Figures 2-15 and Tables 1-4 from the Supplementary Materials.\
-\
-All data sets and results are included in the folders for Settings A, B, and C. The results are presented in matrices; each matrix row corresponds to a specific simulated trial. The data sets for Setting D are not included since the MISTIE II data is proprietary.\
-\
-In the SettingD folder, there is an R script entitled \'93SuppMat_Fig1_code.R\'94 that generates a plot of the distribution of the outcome RICV5 observed in the MISTIE II trial. This plot is Figure 1 of the Supplementary Materials.\
-\
-\cf2 The folder entitled power\
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 This folder corresponds to the simulation study on power in the Supplementary Materials of our paper. There are two subfolders called \'93n10000\'94 and \'93plots\'94. In the \'93n10000\'94 subfolder, we provide the code used to conduct the simulation study. In the code, we simulate many trial data sets and perform our hypothesis test using each data set at certain values of psi (see Supplementary Materials for details). In the \'93plots\'94 subfolder, we visualize the results of the simulation study. \cf2 \
-}
+The folder entitled CLEARIII
+
+There are three subfolders:
+1) “constructDataset”: We format the CLEAR III data set before applying our method and the m-out-of-n bootstrap. The data set is not included because it is proprietary. 
+2) “applyMethod”: We apply our method \hat{CI}_n to the CLEAR III data set. The MATLAB code is provided separately for each outcome.
+3) “applyMoutOfN”: We apply the m-out-of-n bootstrap, using different choices for m including m = n, m = 0.9n, m = 0.75n, m = 0.5n, m = 0.25n. A function for applying the m-out-of-n bootstrap for these choices of m is in the R script “mOfn_code.R”. The code for applying the m-out-of-n bootstrap to the CLEAR III data set is in the R script “computingCIs.R”.
+4) “applyHorowitzManski”: We apply the method by Horowitz and Manski (2000). R code is provided.
+
+
+The folder entitled limitDist_underNull
+
+In the subfolder “binary_noRes_5050”, we take 100,000 draws from the asymptotic distribution of the test statistic under Simulation Setting A when psi = 0.5. We use the code “Fig2.R” to generate Figure 2 of the main paper (“Fig2.pdf”), which is a histogram of these 100,000 draws. 
+
+The folder entitled simulations
+
+There is a subfolder for each setting of the simulation studies. Setting A corresponds to “binary_noRes_5050”; Setting B corresponds to “binary_noHarm_5050”; Setting C corresponds to “binary_noRes_7550”; Setting D corresponds to “MISTIE_RICV5”. Within each subfolder, there are three folders:
+1) “testDatasets”, in which the 5000 (or 1000 in the case of Setting D) trials are simulated
+2) “ourMethod”, which applies our method \hat{CI}_n to each of the simulated trials
+3) “mOfn”, which applies the competitor method using m-out-of-n bootstrap to each of the simulated trials
+4) “manski_horowitz”, which applies the competitor method proposed by Horowitz and Manski (2000) to each of the simulated trials
+5) “chernozhukov” (only in the “binary_noRes_5050” subfolder), which applies the competitor method proposed by Chernozhukov et al (2013) to the simulated trials
+
+The code “plotResults.R” plots the results. It generates Figures 3-4 from the main paper, and Figures 2-15 and Tables 1-4 from the Supplementary Materials.
+
+All data sets and results are included in the folders for Settings A, B, and C. The results are presented in matrices; each matrix row corresponds to a specific simulated trial. The data sets for Setting D are not included since the MISTIE II data is proprietary.
+
+In the SettingD folder, there is an R script entitled “SuppMat_Fig1_code.R” that generates a plot of the distribution of the outcome RICV5 observed in the MISTIE II trial. This plot is Figure 1 of the Supplementary Materials.
+
+The folder entitled power
+
+This folder corresponds to the simulation study on power in the Supplementary Materials of our paper. There are two subfolders called “n10000” and “plots”. In the “n10000” subfolder, we provide the code used to conduct the simulation study. In the code, we simulate many trial data sets and perform our hypothesis test using each data set at certain values of psi (see Supplementary Materials for details). In the “plots” subfolder, we visualize the results of the simulation study. 
