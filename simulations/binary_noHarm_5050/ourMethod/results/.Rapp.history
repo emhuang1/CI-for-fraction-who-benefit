@@ -1,0 +1,4 @@
+load("/Users/emhuang/Dropbox/research/github/CI_for_propWhoBenefit_FINAL/simulations/binary_noHarm_5050/ourMethod/results/res500_withSeed.Rdata")
+load("/Users/emhuang/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noHarm_5050/ourMethod/results/res2000.Rdata")
+res
+result

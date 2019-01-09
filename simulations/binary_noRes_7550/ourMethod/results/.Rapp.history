@@ -1,0 +1,8 @@
+load("/Users/emhuang/Dropbox/research/github/CI_for_propWhoBenefit/binary_noRes_7550/ourMethod/results/res200.Rdata")
+head(ci)
+ci[1,]
+psi <- seq(from = 0, to = 1, by = .01)
+cbind(psi,ci[1,])
+load("/Users/emhuang/Dropbox/research/github/CI_for_propWhoBenefit_FINAL/simulations/binary_noRes_7550/ourMethod/results/res500.Rdata")
+head(CI)
+head(result)
