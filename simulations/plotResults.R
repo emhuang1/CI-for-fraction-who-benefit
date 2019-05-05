@@ -12,7 +12,7 @@ plotCov_singleSetting <- function(n, lb, ub, nsim, homWd, plotTitle, xregion, yr
   setwd(homWd)
   setwd("ourMethod/results")
   load(paste("res",n,".Rdata", sep = ""))
-  if (plotTitle == "Setting D"){
+  if (plotTitle == "Setting D" | plotTitle == "Setting B"){
     CI.our <- ci ##CI has previously been computed
   } else {
     CI.our <- matrix(NA, nrow = nsim, ncol = 2) ##compute CI from the confidence set
@@ -75,18 +75,18 @@ plotCov_singleSetting <- function(n, lb, ub, nsim, homWd, plotTitle, xregion, yr
   plot(psi,cov.horowitz, xlim = xregion, ylim = yregion, xaxt = "n", yaxt = "n", main = NA, xlab = NA, ylab = NA, type = "l", lty = 5, lwd = 1.5, cex.lab=1.5, cex.main=1, yaxs = "i", bty = "l")
   abline(h = 0.95, lty = 2)
   
-  if (plotTitle == "Setting D"){
-    legend("bottomleft", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5))
-  } else {
-    legend("bottomright", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5))
-  }
+  #if (plotTitle == "Setting D"){
+  #  legend("bottomleft", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5))
+  #} else {
+  #  legend("bottomright", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5))
+  #}
   ##UNCOMMENT LINES ABOVE FOR MAIN PAPER PLOTS
   
-  # if (plotTitle == "Setting D"){
-  #   legend("left", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5), cex = 0.8)
-  # } else {
-  #   legend("right", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5), cex = 0.8)
-  # }
+  if (plotTitle == "Setting D"){
+    legend("left", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5), cex = 0.8)
+  } else {
+    legend("right", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5), cex = 0.8)
+  }
   ##UNCOMMENT LINES ABOVE FOR SUPP MAT PLOTS
 }
 
@@ -94,7 +94,7 @@ plotCov_singleSetting_zoomIn <- function(n, lb, ub, nsim, homWd, plotTitle, xreg
   setwd(homWd)
   setwd("ourMethod/results")
   load(paste("res",n,".Rdata", sep = ""))
-  if (plotTitle == "Setting D"){
+  if (plotTitle == "Setting D"|plotTitle == "Setting B"){
     CI.our <- ci ##CI has previously been computed
   } else {
     CI.our <- matrix(NA, nrow = nsim, ncol = 2) ##compute CI from the confidence set
@@ -170,7 +170,7 @@ pdf("SettingA_N500.pdf")
 lb <- 0
 ub <- 0.5
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_5050"
 plotTitle <- "Setting A"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -191,7 +191,7 @@ pdf("SettingB_N500.pdf")
 lb <- -0.002 ##lb and ub are both 0, but we do -0.002/0.002 so grey rectangle is visible
 ub <- 0.002 
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noHarm_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noHarm_5050"
 plotTitle <- "Setting B"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()  
@@ -216,7 +216,7 @@ pdf("SettingA_N200.pdf")
 lb <- 0
 ub <- 0.5
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_5050"
 plotTitle <- "Setting A"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -227,7 +227,7 @@ pdf("SettingA_N1000.pdf")
 lb <- 0
 ub <- 0.5
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_5050"
 plotTitle <- "Setting A"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -238,7 +238,7 @@ pdf("SettingA_N2000.pdf")
 lb <- 0
 ub <- 0.5
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_5050"
 plotTitle <- "Setting A"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -251,7 +251,7 @@ pdf("SettingB_N200.pdf")
 lb <- -0.002 ##lb and ub are both 0, but we do -0.002/0.002 so grey rectangle is visible
 ub <- 0.002 
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noHarm_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noHarm_5050"
 plotTitle <- "Setting B"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -262,7 +262,7 @@ pdf("SettingB_N1000.pdf")
 lb <- -0.002 ##lb and ub are both 0, but we do -0.002/0.002 so grey rectangle is visible
 ub <- 0.002 
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noHarm_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noHarm_5050"
 plotTitle <- "Setting B"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -273,7 +273,7 @@ pdf("SettingB_N2000.pdf")
 lb <- -0.002 ##lb and ub are both 0, but we do -0.002/0.002 so grey rectangle is visible
 ub <- 0.002 
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noHarm_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noHarm_5050"
 plotTitle <- "Setting B"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -287,7 +287,7 @@ nsim <- 5000
 n <- 200
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingC_N200.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_7550"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_7550"
 plotTitle <- "Setting C"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -295,7 +295,7 @@ dev.off()
 n <- 500
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingC_N500.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_7550"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_7550"
 plotTitle <- "Setting C"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -303,7 +303,7 @@ dev.off()
 n <- 1000
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingC_N1000.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_7550"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_7550"
 plotTitle <- "Setting C"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -311,7 +311,7 @@ dev.off()
 n <- 2000
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingC_N2000.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_7550"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_7550"
 plotTitle <- "Setting C"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -324,7 +324,7 @@ nsim <- 1000
 n <- 200
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingD_N200.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/MISTIE_RICV5"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/MISTIE_RICV5"
 plotTitle <- "Setting D"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -332,7 +332,7 @@ dev.off()
 n <- 500
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingD_N500.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/MISTIE_RICV5"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/MISTIE_RICV5"
 plotTitle <- "Setting D"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -340,7 +340,7 @@ dev.off()
 n <- 1000
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingD_N1000.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/MISTIE_RICV5"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/MISTIE_RICV5"
 plotTitle <- "Setting D"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -348,7 +348,7 @@ dev.off()
 n <- 2000
 setwd("~/Desktop/plotsForPaper/suppMatPlots")
 pdf("SettingD_N2000.pdf")
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/MISTIE_RICV5"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/MISTIE_RICV5"
 plotTitle <- "Setting D"
 plotCov_singleSetting(n, lb, ub, nsim, homWd, plotTitle, c(0,1), c(0,1))
 dev.off()
@@ -362,7 +362,7 @@ avgWidth <- function(n, nsim, homWd, plotTitle){
   setwd(homWd)
   setwd("ourMethod/results")
   load(paste("res",n,".Rdata", sep = ""))
-  if (plotTitle == "Setting D"){
+  if (plotTitle == "Setting D" | plotTitle == "Setting B"){
     CI.our <- ci ##CI has previously been computed
   } else {
     CI.our <- matrix(NA, nrow = nsim, ncol = 2) ##compute CI from the confidence set
@@ -404,7 +404,7 @@ library(xtable)
 
 ##SETTING A##
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_5050"
 plotTitle <- "Setting A"
 
 n <- 200
@@ -418,7 +418,7 @@ settingA.width <- rbind(settingA.width, c(n, avgWidth(n, nsim, homWd, plotTitle)
 
 ##SETTING B##
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noHarm_5050"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noHarm_5050"
 plotTitle <- "Setting B"
 
 n <- 200
@@ -433,7 +433,7 @@ settingB.width <- rbind(settingB.width, c(n, avgWidth(n, nsim, homWd, plotTitle)
 
 ##SETTING C##
 nsim <- 5000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/binary_noRes_7550"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noRes_7550"
 plotTitle <- "Setting C"
 
 n <- 200
@@ -448,7 +448,7 @@ settingC.width <- rbind(settingC.width, c(n, avgWidth(n, nsim, homWd, plotTitle)
 
 ##SETTING D##
 nsim <- 1000
-homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/MISTIE_RICV5"
+homWd <- "~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/MISTIE_RICV5"
 plotTitle <- "Setting D"
 
 n <- 200
@@ -557,3 +557,26 @@ nsim <- 1000
 homWd <- "~/Dropbox/research/github/CI_for_propWhoBenefit/simulations/MISTIE_RICV5"
 span01(homWd, nsim)
 
+
+
+###########################################################################################
+##Generate the series of boxplots shown in the Supplementary Materials##
+###########################################################################################
+
+##These boxplots display the distribution of the observed difference in proportions
+##under treatment versus under control, stratified by the left endpoint of the CI
+##outputted by our method. This is under Setting B and sample size n = 500.
+
+setwd("~/Dropbox/research/github/CI-for-fraction-who-benefit/simulations/binary_noHarm_5050/ourMethod/results")
+
+load("res500_detailed.Rdata")
+
+result$empdiff <- result$pt2 - result$pc2
+
+boxplot(empdiff ~ ci_left, result, 
+        xlab = "Left Endpoint of the Confidence Interval Generated by our Method",
+        ylab = "Observed Difference in Proportions")
+
+for (psi in seq(from = 0, to = 0.1, by = 0.01)){
+  print(c(psi, 100*mean(result$ci_left == psi)))  
+}

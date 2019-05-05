@@ -53,10 +53,11 @@ sigma(4,3) = sigma(3,4);
 sigma = sigma * 4; 
     
     
-bvec3 = zeros(21,1);
-bvec4 = zeros(19,1);
+bvec3 = [zeros(19,1);-10*sqrt(n)/log(n);zeros(2,1)];
+bvec4 = [zeros(19,1);-10*sqrt(n)/log(n)];
+
     
-Amat4 = zeros(19,11);
+Amat4 = zeros(20,11);
     
 Amat4(1:3,1:3) = eye(3);
 
@@ -100,6 +101,8 @@ Amat4(18,7) = -1;
 Amat4(18,11) = 1;
 Amat4(19,7) = 1;
 Amat4(19,11) = -1;
+
+Amat4(20,1:3) = -1; 
 
 
 
@@ -157,12 +160,79 @@ for j = 1:length(psi)
     val1 = val1 + 1 + psi(j)^2 - 2*(pC1 + pT2)*psi(j);
     
     Tn = n * (val1 - val2);
-    CI(j) = (Tn <= T95(j)+1e-10);
-    clear tdraws Amat3 temp Tn
+
+    if Tn <= T95(j)+1e-10
+        break
+    end
+    
 end
+
+leftLim = psi(j);
+
+
+for j = length(psi):-1:1
+    rng('default');
+    rng(j);
+    temp  = [psi(j), psi(j)-1, psi(j),zeros(1,8)];
+    Amat3 = [Amat4;temp;-temp];
+    
+    tdraws = zeros(1,ndraw);
+    
+    for i = 1:ndraw
+        Z = mvnrnd(zeros(4,1),sigma);
+        dvec34 = [zeros(1,3),Z,zeros(1,4)];
+        
+        %[~,val4] = cplexqp(Dmat34,dvec34,-Amat4,-bvec4);
+        [~,val4] = quadprog(Dmat34,dvec34,-Amat4,-bvec4,[],[],[],[],[],options);
+        %if exitflag ~= 1
+        %    [~,val4,exitflag] = quadprog(Dmat34,dvec34,-Amat4,-bvec4,[],[],[],[],[],options);
+        %    if exitflag ~= 1
+        %        error(msg)
+        %    end
+        %end
+        %[~,val3] = cplexqp(Dmat34,dvec34,-Amat3,-bvec3);
+        [~,val3] = quadprog(Dmat34,dvec34,-Amat3,-bvec3,[],[],[],[],[],options);
+        %if exitflag ~= 1
+        %    [~,val3,exitflag] = quadprog(Dmat34,dvec34,-Amat3,-bvec3,[],[],[],[],[],options);
+        %    if exitflag ~= 1
+        %        error(msg)
+        %    end
+        %end
+        tdraws(i) = val3 - val4;
+      
+        clear val3 val4 x3 x4 Z dvec34 
+    end
+    tdraws = sort(tdraws);
+    T95(j) = tdraws(0.95*ndraw);
+    %T95(j) = quantile(tdraws,0.95); %Segmentation (core dumped)
+    %error on cluster
+    
+    bvec1 = [0; 0; 1-psi(j); psi(j)-1];
+    dvec1 = 2 * [pC1 + pT1 - pC*psi(j), pC2 + pT2 - pT*psi(j)];
+    %[~, val1] = cplexqp(Dmat1,-dvec1,-Amat1,-bvec1);
+    [~, val1] = quadprog(Dmat1,-dvec1,-Amat1,-bvec1,[],[],[],[],[],options);
+    %if exitflag ~= 1
+    %    error(msg)
+    %end
+    val1 = val1 + 1 + psi(j)^2 - 2*(pC1 + pT2)*psi(j);
+    
+    Tn = n * (val1 - val2);
+
+    if Tn <= T95(j)+1e-10
+        break
+    end
+    
+end
+
+rightLim = psi(j);
+
+CI = [leftLim, rightLim];
+
 FileName = ['result',datestr(now, 'dd-mmm-yyyy'),'-',num2str(val),'.mat'];
-save(FileName, 'CI', 'T95')
+save(FileName, 'CI')
 
 exit
+
+
 
 
