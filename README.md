@@ -29,7 +29,7 @@ There is a subfolder for each setting of the simulation studies. Setting A corre
 4) “manski_horowitz”, which applies the competitor method proposed by Horowitz and Manski (2000) to each of the simulated trials
 5) “chernozhukov” (only in the “binary_noRes_5050” subfolder), which applies the competitor method proposed by Chernozhukov et al (2013) to the simulated trials
 
-The code “plotResults.R” plots the results. It generates Figures 3-4 from the main paper, and Figures 2-15 and Tables 1-4 from the Supplementary Materials.
+The code “plotResults.R” plots the results. It generates Figures 3-4 from the main paper, and Figures 2-16 and Tables 1-4 from the Supplementary Materials.
 
 All data sets and results are included in the folders for Settings A, B, and C. The results are presented in matrices; each matrix row corresponds to a specific simulated trial. The data sets for Setting D are not included since the MISTIE II data is proprietary.
 
