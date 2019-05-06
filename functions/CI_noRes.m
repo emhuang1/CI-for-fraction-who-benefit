@@ -208,7 +208,7 @@ CI
 %The confidence interval for the example data set is [0.26,0.61].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-FileName = ['result',datestr(now, 'dd-mmm-yyyy'),'-',num2str(val),'.mat'];
+FileName = ['result',datestr(now, 'dd-mmm-yyyy'),'.mat'];
 save(FileName, 'CI')
 
 exit
