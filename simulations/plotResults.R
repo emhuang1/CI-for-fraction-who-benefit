@@ -12,7 +12,7 @@ plotCov_singleSetting <- function(n, lb, ub, nsim, homWd, plotTitle, xregion, yr
   setwd(homWd)
   setwd("ourMethod/results")
   load(paste("res",n,".Rdata", sep = ""))
-  if (plotTitle == "Setting D" | plotTitle == "Setting B"){
+  if (plotTitle == "Setting D"){     
     CI.our <- ci ##CI has previously been computed
   } else {
     CI.our <- matrix(NA, nrow = nsim, ncol = 2) ##compute CI from the confidence set
@@ -75,11 +75,11 @@ plotCov_singleSetting <- function(n, lb, ub, nsim, homWd, plotTitle, xregion, yr
   plot(psi,cov.horowitz, xlim = xregion, ylim = yregion, xaxt = "n", yaxt = "n", main = NA, xlab = NA, ylab = NA, type = "l", lty = 5, lwd = 1.5, cex.lab=1.5, cex.main=1, yaxs = "i", bty = "l")
   abline(h = 0.95, lty = 2)
   
-  #if (plotTitle == "Setting D"){
+  # if (plotTitle == "Setting D"){
   #  legend("bottomleft", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5))
-  #} else {
+  # } else {
   #  legend("bottomright", c("our method","m = n", "m = 0.25n","Horowitz-Manski"), lty = c(1,3,4,5), lwd = c(1.5,2,2,1.5))
-  #}
+  # }
   ##UNCOMMENT LINES ABOVE FOR MAIN PAPER PLOTS
   
   if (plotTitle == "Setting D"){
@@ -94,7 +94,7 @@ plotCov_singleSetting_zoomIn <- function(n, lb, ub, nsim, homWd, plotTitle, xreg
   setwd(homWd)
   setwd("ourMethod/results")
   load(paste("res",n,".Rdata", sep = ""))
-  if (plotTitle == "Setting D"|plotTitle == "Setting B"){
+  if (plotTitle == "Setting D"){
     CI.our <- ci ##CI has previously been computed
   } else {
     CI.our <- matrix(NA, nrow = nsim, ncol = 2) ##compute CI from the confidence set
@@ -362,7 +362,7 @@ avgWidth <- function(n, nsim, homWd, plotTitle){
   setwd(homWd)
   setwd("ourMethod/results")
   load(paste("res",n,".Rdata", sep = ""))
-  if (plotTitle == "Setting D" | plotTitle == "Setting B"){
+  if (plotTitle == "Setting D"){
     CI.our <- ci ##CI has previously been computed
   } else {
     CI.our <- matrix(NA, nrow = nsim, ncol = 2) ##compute CI from the confidence set
